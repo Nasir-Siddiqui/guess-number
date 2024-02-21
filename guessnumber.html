@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess Number Game</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;background-color: #ffecec;
+        }
+        .container{
+            
+            /* height: 100vh; */
+            padding: 60px 0px;
+            /* margin-top: auto;
+            margin-bottom: auto; */
+            margin-right: auto;
+            margin-left: auto;
+            /* width: 80%; */
+            /* align-items: center; */
+            justify-content: center;
+            text-align: center;
+        }
+        h1{
+            font-size: 66px;
+        }
+        h3{
+            font-size: 33px;
+        }
+        input{
+            font-size: 22px;
+            padding: 10px 20px;
+            border: 2px solidrgb(0, 0, 0)e;
+            border-radius: 10px;
+        }
+        /* input:hover{
+            border: 2px solid red;
+        } */
+        .btns,button{
+            margin: 20px;
+        }
+        button{
+            border: 2px solidrgb(0, 0, 0)e;
+            border-radius: 10px;
+            font-size: 22px;
+            padding: 10px 25px;
+            color: white;
+        }
+        button:hover{
+            cursor: pointer;
+        }
+        .check{
+            background-color: rgb(0, 172, 0);
+        }
+        .check:hover{
+            background-color: rgb(0, 219, 0);
+        }
+        #restart{
+            background-color: rgb(32, 125, 255);
+        }
+        #restart:hover{
+            background-color: rgb(0, 85, 203);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome To Guess the Number Game</h1>
+        <h3>Enter the number between 1 to 50 </h3>
+        <input type="number" name="num" id="num" placeholder="Enter Number">
+        <div class="btns">
+            <button class="check" onclick="checkGuess()">Check</button>
+            <button id="restart" onclick="location.reload()">Restart</button>
+        </div>
+        <h2 id="result"></h2>
+    </div>
+
+
+
+    
+        <script>
+
+           
+    // Generate random number between 1 and 50
+    const randomNumber = Math.floor(Math.random() * 50) + 1;
+    console.log(randomNumber); // For debugging purposes
+
+    // Function to check the user's guess
+    function checkGuess() {
+        const userGuess = parseInt(document.getElementById('num').value);
+        const resultP = document.getElementById('result');
+
+        if (isNaN(userGuess) || userGuess < 1 || userGuess > 50) {
+            resultP.textContent = 'Please enter a valid number between 1 and 50!';
+            return;
+        }
+
+        if (userGuess === randomNumber) {
+            resultP.textContent = 'Congratulations! You guessed the correct number!';
+        } else if (userGuess < randomNumber) {
+            resultP.textContent = 'Too low! Try a higher number.';
+        } else {
+            resultP.textContent = 'Too high! Try a lower number.';
+        }
+
+        // Clear input field after checking
+        document.getElementById('num').value = '';
+    }
+</script>
+
+   
+</body>
+</html>
